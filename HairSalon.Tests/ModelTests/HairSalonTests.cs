@@ -26,13 +26,12 @@ namespace HairSalon.Tests
     public void GetStylistName_ReturnName_String()
     {
       //Arrange
-      string getStylistName = "Sally";
-
+      StylistClass hawaii = new StylistClass("Sally");
       //Act
-      string newName = getStylistName.GetName();
+      var newName = hawaii.GetName();
 
       //Assert
-      Assert.AreEqual( newName, typeof(string));
+      Assert.IsInstanceOfType(newName, typeof(string));
     }
   }
 }
