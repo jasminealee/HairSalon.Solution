@@ -11,7 +11,7 @@ namespace HairSalon.Tests
     {
 
     [TestMethod]
-    public void Index_ReturnsCorrectView_True()
+    public void 
     {
     }
   }
