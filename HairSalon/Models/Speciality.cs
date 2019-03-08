@@ -40,5 +40,23 @@ namespace HairSalon.Models
 
     }
 
+    public override bool Equals(System.Object otherKitten)
+  {
+    if (!(otherKitten is Kitten))
+    {
+      return false;
+    }
+    else
+    {
+      Kitten newKitten = (Kitten) otherKitten;
+      return this.GetName().Equals(newKitten.GetName());
+    }
+  }
+
+  public override int GetHashCode()
+  {
+    return this.GetName().GetHashCode();
+  }
+
 
 }

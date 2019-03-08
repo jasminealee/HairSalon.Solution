@@ -34,5 +34,36 @@ namespace HairSalon.Tests
       //Assert
       Assert.IsInstanceOfType(newName, typeof(string));
     }
+
+    [TestMethod]
+    //Arrange
+      string description = "Walk the dog.";
+      Item newItem = new Item(description);
+
+      //Act
+      string updatedDescription = "Do the dishes";
+      newItem.SetDescription(updatedDescription);
+      string result = newItem.GetDescription();
+
+      //Assert
+      Assert.AreEqual(updatedDescription, result);
+    }
+
+
+    [TestMethod]
+
+  public void GetAll_ReturnsEmptyList_ItemList()
+  {
+    //Arrange
+    List<Item> newList = new List<Item> { };
+
+    //Act
+    List<Item> result = Item.GetAll();
+
+    //Assert
+    CollectionAssert.AreEqual(newList, result);
   }
+
+  }
+
 }
