@@ -1,11 +1,11 @@
 # _Hair Salon Database Website_
 
-#### _, _
+#### Independent Project Week 9 Databases and Advanced Databases_March 8, 2019, _
 
 #### By _**Jasmine Lee**_
 
 ## Description
-
+This website operates as a database which allows a user to input a hair stylist's name, their client, and list their specialties. 
 
 ## Setup/Installation Requirements
 Download .NET Core 2.1.3 SDK and .NET Core Runtime 2.0.9 and install them.
