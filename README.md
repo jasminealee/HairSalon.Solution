@@ -5,7 +5,7 @@
 #### By _**Jasmine Lee**_
 
 ## Description
-This website operates as a database which allows a user to input a hair stylist's name, their client, and list their specialties. 
+This website operates as a database which allows a user to input a hair stylist's name, their client, and list their specialties.
 
 ## Setup/Installation Requirements
 Download .NET Core 2.1.3 SDK and .NET Core Runtime 2.0.9 and install them.
@@ -18,19 +18,12 @@ Download .NET Core 2.1.3 SDK and .NET Core Runtime 2.0.9 and install them.
 ## Setup/Installation Requirements
 Important Notes: Mono, .Net Core 1.1.4 SDK, and .NET Core Runtime 1.1.2 must be downloaded and installed.
 
-* Open GitHub and go to https://github.com/jasminealee/WordCounter.Solution click "clone or download"; copy the url provided.
-* Go to Terminal and clone the folder by typing "git clone (repository url)" then enter.
-* Open the folder in atom or your choice of text editor.
-* To run in Terminal, navigate to the WordCounter directory then compile the Main.cs and RepeatCounter.cs files with command "mcs Main.cs Models/RepeatCounter.cs"
-* Next use command "mono Main.exe" to execute the Main.exe file.
-* To run the tests, navigate to the WordCounter.Tests directory then use command "dotnet test".
-
 
 ## Known Bugs
-None
+A lot
 
 ## Support and contact details
-Contact: jasmine.al1722@gmail.com
+Contact: jasmine.al1722@gmail.com or search "jasminealee" on github
 
 ## Technologies Used
 * Terminal

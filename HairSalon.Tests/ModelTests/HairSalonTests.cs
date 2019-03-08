@@ -29,7 +29,7 @@ namespace HairSalon.Tests
       //Arrange
       ClientClass new Client = (Client);
       //Act
-      var newName = hawaii.GetName();
+      var newName = sally.GetName();
 
       //Assert
       Assert.IsInstanceOfType(newName, typeof(string));
@@ -63,7 +63,7 @@ namespace HairSalon.Tests
     //Assert
     CollectionAssert.AreEqual(newList, result);
   }
-  
+
   [TestMethod]
   public void Equals_ReturnsTrueIfDescriptionsAreTheSame_Item()
   {
