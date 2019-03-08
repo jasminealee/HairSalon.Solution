@@ -49,4 +49,16 @@ namespace HairSalon.Models
       }
     }
 
+  public static void ClearAll()
+  {
+    MySqlConneciton conn = DB.Connection();
+    conn.Open();
+    var cmd = conn.CreateCommand() as MySqlCommand;
+    cmd.CommandText = @"Delete FROM stylistClass;";
+    conn.Close();
+    if (conn != null)
+    {
+      conn.Dispose();
+    }
+  }
 }
