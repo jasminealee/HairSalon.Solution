@@ -39,5 +39,22 @@ namespace WordCounter.Controllers
       model.Add("category", foundCategory);
       return View("Show", model);
     }
+    [TestMethod]
+  public void Save_AssignsIdToObject_Id()
+  {
+    //Arrange
+    Item testItem = new Item("Mow the lawn");
+
+    //Act
+    testItem.Save();
+    Item savedItem = Item.GetAll()[0];
+
+    int result = savedItem.GetId();
+    int testId = testItem.GetId();
+
+    //Assert
+    Assert.AreEqual(testId, result);
+  }
+
   }
 }
