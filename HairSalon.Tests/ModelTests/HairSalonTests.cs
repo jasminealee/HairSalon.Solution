@@ -15,8 +15,6 @@ namespace HairSalon.Tests
       ClientClass.ClearAll();
       SpecialistClass.ClearAll();
       StylistClass.ClearAll();
-
-
     }
 
 
@@ -29,7 +27,7 @@ namespace HairSalon.Tests
     public void GetStylistName_ReturnName_String()
     {
       //Arrange
-      StylistClass hawaii = new StylistClass("Sally");
+      ClientClass new Client = (Client);
       //Act
       var newName = hawaii.GetName();
 
@@ -38,17 +36,3 @@ namespace HairSalon.Tests
     }
   }
 }
-
-[TestClass]
-  public class ItemTest : IDisposable
-  {
-
-    public void Dispose()
-    {
-      Item.ClearAll();
-    }
-
-    public ItemTest()
-    {
-      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=to_do_list_test;";
-    }

@@ -63,6 +63,18 @@ namespace HairSalon.Models
       }
       return allClients;
     }
+
+    public static void ClearAll()
+    {
+      MySqlConneciton conn DB.Connection();
+      conn Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
   }
 
