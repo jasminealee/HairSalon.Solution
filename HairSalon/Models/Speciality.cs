@@ -40,16 +40,16 @@ namespace HairSalon.Models
 
     }
 
-    public override bool Equals(System.Object otherKitten)
+    public override bool Equals(System.Object otherStylist)
   {
-    if (!(otherKitten is Kitten))
+    if (!(otherStylist is Stylist))
     {
       return false;
     }
     else
     {
-      Kitten newKitten = (Kitten) otherKitten;
-      return this.GetName().Equals(newKitten.GetName());
+      Stylist newStylist = (Stylist) otherStylist;
+      return this.GetName().Equals(newStylist.GetName());
     }
   }
 
@@ -57,6 +57,34 @@ namespace HairSalon.Models
   {
     return this.GetName().GetHashCode();
   }
+  public override bool Equals(System.Object otherItem)
+      {
+        if (!(otherItem is Item))
+        {
+          return false;
+        }
+        else
+        {
+          Item newItem = (Item) otherItem;
+          bool descriptionEquality = (this.GetDescription() == newItem.GetDescription());
+          return (descriptionEquality);
+        }
+      }
+      public void Save()
+         {
+           MySqlConnection conn = DB.Connection();
+           conn.Open();
+           var cmd = conn.CreateCommand() as MySqlCommand;
+           cmd.CommandText = @"INSERT INTO items (description) VALUES (@ItemDescription);";
+
+           // more logic will go here in a moment
+
+            conn.Close();
+            if (conn != null)
+            {
+              conn.Dispose();
+            }
+         }
 
 
 }
