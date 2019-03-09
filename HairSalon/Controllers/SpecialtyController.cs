@@ -6,7 +6,7 @@ namespace WordCounter.Controllers
 {
   public class WordCounterController : Controller
   {
-    [HttpGet("/wordcounter")]
+    [HttpGet("specialty")]
     public ActionResult Index()
     {
       return View();
@@ -21,7 +21,7 @@ namespace WordCounter.Controllers
     [HttpPost("/wordcounter")]
     public ActionResult Action(string phrase, string word)
     {
-      int counter = 0;
+     = 0;
       RepeatCounter myRepeatCounter = new RepeatCounter(phrase, word, counter);
       myRepeatCounter.Count(phrase, word, counter);
       return RedirectToAction("Index", myRepeatCounter);

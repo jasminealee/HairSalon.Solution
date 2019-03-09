@@ -2,23 +2,23 @@ using Microsoft.AspNetCore.Mvc;
 using WordCounter.Models;
 using System.Collections.Generic;
 
-namespace WordCounter.Controllers
+namespace Client.Controllers
 {
-  public class WordCounterController : Controller
+  public class ClientController : Controller
   {
-    [HttpGet("/wordcounter")]
+    [HttpGet("/client")]
     public ActionResult Index()
     {
       return View();
     }
 
-    [HttpGet("/wordcounter/new")]
+    [HttpGet("/client/new")]
     public ActionResult New()
     {
       return View();
     }
 
-    [HttpPost("/wordcounter")]
+    [HttpPost("/client")]
     public ActionResult Action(string phrase, string word)
     {
       int counter = 0;
