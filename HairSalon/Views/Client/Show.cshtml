@@ -1,9 +1,16 @@
-@using HairSalon.Models
+@using HairSalon.Models;
+<!DOCTYPE html>
+  <head>
+  </head>
+  <body>
+    <div class='container'>
+      <h2>@Model.GetName()</h2>
+      <a class='deleteLink href='/stylists/clients/@Model.GetId()/edit'>Edit Client</a>
+      
+      <a class='deleteLink' href='/stylists/clients/@Model.GetId()/delete'>Delete Client</a>
 
-  }
-  <h1>Welcome To Your Database:</h1>
+      <p>Client Stylist: <a href='/stylists
 
-  <h2>@Model["item"].GetDescription()</h2>
-  <h3>Category: @Model["category"].GetName()</h3>
-
-  <a href='/categories/@Model["category"].GetId()/items/@Model["item"].GetId()/edit'>Edit this Item</a>
+      <a href='/stylists/clients/showall'>Back</a>
+  </body>
+</html>

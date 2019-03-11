@@ -5,38 +5,78 @@ using HairSalon;
 
 namespace HairSalon.Models
 {
-  public class ClientClass
+  public class Client
   {
-    private int _id;
     private string _name;
-    private int _specialistid;
+    private int _address;
+    private int _phoneNumber;
+    private string _email;
+    private int _stylistId;
 
-    public ClientClass (int id, string name, int specialistid)
+
+    public Client(string name, string address, string phoneNumber, string email, int stylistId)
     {
-      _id = id;
       _name = name;
-      _specialist_id = specialistid;
+      _address = address;
+      _phoneNumber = phoneNumber;
+      _email = email;
+      _stylist_id = stylist_id;
     }
 
-    public ClientClass (string name, int specialistid)
+    public Client(string name, int stylist_id)
     {
-      _id = id;
-      _specialistid = specialistid;
-    }
-
-    public int GetId()
-    {
-      return id;
+      _name = name;
+      _stylist_id = stylist_id;
     }
 
     public string GetName()
     {
-      return name;
+      return _name;
     }
 
-    public int GetSpecialistId()
+    public string GetAddress()
     {
-      return specialist_id;
+      return _address;
+    }
+
+    public string GetEmail()
+    {
+      return _email;
+    }
+
+    public int GetStylistId()
+    {
+      return _stylist_id;
+    }
+
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO clients (name, stylistId) VALUES (@ClientName , @ClientStylistId);";
+      cmd.Parameters.AddWithValue("@ClientName" , this._name);
+      cmd.Parameters.AddWithValue("@ClientStylistId" , this._stylistId);
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public static void ClearAll()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM clients;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+      conn.Dispose();
+      }
     }
 
     public static List<ClientClass> GetAll()
@@ -47,73 +87,37 @@ namespace HairSalon.Models
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT * FROM clients;";
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-      while(rdr.Read())
+      while(rdr.Read()
       {
-        int id = rdr.GetInt32(0);
         string name = rdr.GetString(1);
-        int stylist_id = rdr.GetInt32(2);
-        ClientClass newClient = new ClientClass(id, name, stylist_id);
+        int address = rdr.GetInt32(2);
+        int phoneNumber = rdr.GetInt(2);
+        string email = rdr.GetString(1);
+        int stylistId = rdr.GetInt32(2);
+        Client newClient = new Client( name, address, phoneNumber, email, stylist_id);
         allClients.Add(newClient);
 
       }
       conn.Close();
       if (conn !=null)
       {
-          conn.Dispose();
+        conn.Dispose();
       }
       return allClients;
     }
 
-    public static void ClearAll()
+    public override bool Equals(System.Object otherClient)
     {
-      MySqlConneciton conn DB.Connection();
-      conn Open();
-      var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.ExecuteNonQuery();
-      conn.Close();
-      if (conn != null)
+      if (!(otherClient is Client))
       {
-        conn.Dispose();
+        return false;
+      }
+      else
+      {
+        Client newClient = (Client) otherClient;
+        bool nameEquality = (this.GetName() == newClient.GetName());
+        return (nameEquality);
       }
     }
-    [TestMethod]
-  public void Edit_UpdatesItemInDatabase_String()
-  {
-    //Arrange
-    string firstDescription = "Walk the Dog";
-    Item testItem = new Item(firstDescription);
-    testItem.Save();
-    string secondDescription = "Mow the lawn";
-
-    //Act
-    testItem.Edit(secondDescription);
-    string result = Item.Find(testItem.GetId()).GetDescription();
-
-    //Assert
-    Assert.AreEqual(secondDescription, result);
-  }
-
-  public void Edit(string newDescription)
-  {
-    MySqlConnection conn = DB.Connection();
-    conn.Open();
-    var cmd = conn.CreateCommand() as MySqlCommand;
-    cmd.CommandText = @"UPDATE items SET description = @newDescription WHERE id = @searchId;";
-    MySqlParameter searchId = new MySqlParameter();
-    searchId.ParameterName = "@searchId";
-    searchId.Value = _id;
-    cmd.Parameters.Add(searchId);
-    MySqlParameter description = new MySqlParameter();
-    description.ParameterName = "@newDescription";
-    description.Value = newDescription;
-    cmd.Parameters.Add(description);
-    cmd.ExecuteNonQuery();
-
-        conn.Close();
-        if (conn != null)
-        {
-          conn.Dispose();
-        }
-    }
-
 }
+  }

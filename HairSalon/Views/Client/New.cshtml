@@ -1,10 +1,22 @@
-@using HairSalon.Models
-@{
-  Layout = "_Layout";
-  }
-<div class="container">
-  <ul class="nav nav-tabs nav-justified">
-    <li>< a href=/stylists/new">Add a stylist: </a></li>
-    <li>a href=/"stylists/clients.new">Add a Client: </a></li>
-  </ul>
-</div>
+@using HairSalon.Models;
+<!DOCTYPE html>
+  <head>
+    <meta charset='utf-8'>
+  </head>
+  </div>
+  <div class='container'>
+    <form action = '/stylists/clients/new' method='post'>
+      <label for='clientName'>Client Name</label>
+      <input id='clientName' name='clientName' type='text' required><br>
+      <label for='stylistId'>Client's Stylist</label>
+      <select name='stylistId' required>
+        <option name='stylistId' value=@stylist.GetId()>@stylist.GetName()</option>
+          }
+      </select>
+        <p id='noStylists'>No existing stylists.</p>
+      }
+      <button type='submit'>Add Client</button>
+    </form>
+  </div>
+  </body>
+</html>

@@ -1,60 +1,53 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
-using WordCounter.Models;
 using System.Collections.Generic;
+using HairSalon.Models;
 
-namespace Client.Controllers
+namespace HairSalon.Controllers
 {
   public class ClientController : Controller
   {
-    [HttpGet("/client")]
-    public ActionResult Index()
-    {
-      return View();
-    }
-
-    [HttpGet("/client/new")]
+    [HttpGet("/stylists/clients/new")]
     public ActionResult New()
     {
-      return View();
+      List<Stylist> allStylists = Stylist.GetAll();
+      return View(allStylists);
     }
 
-    [HttpPost("/client")]
-    public ActionResult Action(string phrase, string word)
+    [HttpPost("/stylists/clients/new")]
+    public ActionResult MakeClient(string clientName, int stylistId)
     {
-      int counter = 0;
-      RepeatCounter myRepeatCounter = new RepeatCounter(phrase, word, counter);
-      myRepeatCounter.Count(phrase, word, counter);
-      return RedirectToAction("Index", myRepeatCounter);
-    }
-    [HttpPost("/categories/{categoryId}/items")]
-    public ActionResult Create(int categoryId, string itemDescription)
-    {
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      Category foundCategory = Category.Find(categoryId);
-      Item newItem = new Item(itemDescription);
-      newItem.Save();    // <--- This line is new!
-      foundCategory.AddItem(newItem);
-      List<Item> categoryItems = foundCategory.GetItems();
-      model.Add("items", categoryItems);
-      model.Add("category", foundCategory);
-      return View("Show", model);
-    }
-    [TestMethod]
-  public void Save_AssignsIdToObject_Id()
-  {
-    //Arrange
-    Item testItem = new Item("Mow the lawn");
+            Client client = new Client(clientName, stylistId);
+            client.Save();
+            return RedirectToAction("ShowAll");
+        }
 
-    //Act
-    testItem.Save();
-    Item savedItem = Item.GetAll()[0];
+        [HttpGet("/stylists/clients/{id}/delete")]
+        public ActionResult Delete(int id)
+        {
+            Client.Delete(id);
+            return View();
+        }
 
-    int result = savedItem.GetId();
-    int testId = testItem.GetId();
+        [HttpGet("/stylists/clients/{id}")]
+        public ActionResult Show(int id)
+        {
+            Client client = Client.GetClientById(id);
+            return View(client);
+        }
 
-    //Assert
-    Assert.AreEqual(testId, result);
-  }
+        [HttpGet("/stylists/clients/showall")]
+        public ActionResult ShowAll()
+        {
+            List<Client> clientList = Client.GetAll();
+            return View(clientList);
+        }
 
-  }
-}
+        [HttpGet("/stylists/clients/deleteall")]
+        public ActionResult DeleteAll()
+        {
+            Client.ClearAll();
+            return RedirectToAction("ShowAll");
+        }
+
+}    }  

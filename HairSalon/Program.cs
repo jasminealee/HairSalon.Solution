@@ -1,21 +1,20 @@
-using System;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace ProjectName
+namespace HairSalon
 {
-  public class Program
-  {
-    public static void Main(string[] args)
+    public class Program
     {
-      var host = new WebHostBuilder()
-        .UseKestrel()
-        .UseIISIntegration()
-        .UseContentRoot(Directory.GetCurrentDirectory())
-        .UseStartup<Startup>()
-        .Build();
+        public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
 
-      host.Run();
+            host.Run();
+        }
     }
-  }
 }
