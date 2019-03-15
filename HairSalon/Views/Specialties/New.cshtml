@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-  <head>
-  </head>
-  <body>
-    <h1>Add a specialty</h1>
-    <p>Add a specialty here:</p>
+@{
+  Layout = "_Layout";
+}
 
-    <form action="/specialties" method="post">
-      <label for="specialtyDescription">Specialty: </label>
-      <input id="specialtyDescription" name="specialtyDescription" type="text" required>
-      <button type="submit">Add</button>
-    </form>
-
-    <p><a href="/">Back home</a></p>
-    <p><a href="/stylists">Back to stylists.</a></p>
-  </body>
-</html>
+<h1>Fill in the information for a specialty:</h1>
+<form action="/specialties" method="post">
+  <div class="form-group">
+    <label for="description">Specialty Description:</label>
+    <input id="description" name="description" type="text" class="form-control" required>
+  </div>
+  <button type="submit">Go!</button>
+</form>

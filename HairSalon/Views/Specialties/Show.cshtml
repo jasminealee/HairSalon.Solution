@@ -1,22 +1,28 @@
 @using HairSalon.Models;
-<!DOCTYPE html>
-  <head>
-  </head>
-  <body>
-    <h1>Hair salon</h1>
-    <h2>Specialty: @Model["selectedSpecialty"].GetDescription()</h2>
 
-    <div class="container">
-
-    <div>
-    <p>All Stylists With Particular Speciality:</p>
-    @foreach(StylistClass stylist in @Model["stylists"])
+<h1>@Model["specialty"].GetFeature() Specialty:</h1>
+<br>
+<h2>Stylists with this specialty:</h2>
+<ul>
+  @if (Model["stylists"].Count == 0){
+    <p>There are no stylists that have this specialty yet.</p>
+  }
+  @if (Model["stylists"].Count != 0;
+  {
+    @foreach (StylistClass stylist in Model["stylists"])
     {
-        <a href="/stylists/@stylist.GetId()">@stylist.GetName()</a><br>
+     <strong><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a></strong><
     }
-    </div>
-  
-    <a href="/stylists/specialities/showall">Back</a><br>
-</div>
-  </body>
-</html>
+  }
+</ul>
+
+<h4>Add this specialty to another stylist:</h4>
+<form action='/specialties/@Model["specialty"].GetId()/stylists/new' method="post">
+  <label for="stylistId">Select a stylist:</label>
+  <select id="stylistId" name="stylistId" type="text">
+    @foreach (var stylist in @Model["allStylists"]){
+      <option value="@stylist.GetId()">@stylist.GetFirstName()</option>
+    }
+  </select>
+  <button type="submit" name="button" class="btn btn-success">Add</button>
+</form>

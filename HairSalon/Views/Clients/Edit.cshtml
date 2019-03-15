@@ -1,5 +1,7 @@
-<h1>Fill in the information for a stylist:</h1>
-<form action="/stylists" method="post">
+<h1>Hair Salon Client Details</h1>
+
+<h2>Edit client: @Model["client"].GetName()</h2>
+<form action="/stylists/@Model["stylist"].GetId()/clients/@Model["client"].GetId()" method="post">
   <div class="form-group">
     <label for="name">Name:</label>
     <input id="name" name="name" type="text" class="form-control" required>
@@ -8,5 +10,8 @@
     <label for="phoneNumber">Phone Number:</label>
     <input id="phoneNumber" name="phoneNumber" type="text" class="form-control" required>
   </div>
-  <button type="submit">submit</button>
+
+  <br>
+  <br>
+  <button type="submit">Edit:</button>
 </form>

@@ -1,43 +1,54 @@
-# _Hair Salon Database Website_
+# _HairSalon.Solution_
 
-#### Independent Project Week 9 Databases and Advanced Databases_March 8, 2019, _
+#### _Independent Project Weeks 8 and 9, March 14, 2019
 
 #### By _**Jasmine Lee**_
 
 ## Description
-This website operates as a database which allows a user to input a hair stylist's name, their client, and list their specialties.
+
+_This website allows a user to input information with regards to a hair stylist and their clients. Hair stylists do not share clients, but can share specialties with other clients._
+
+## Specifications
+Behavior | Input | Output |
+|----------|:-----:|:------:|
+| User clicks "View/add stylists and add clients" link. | Click | Page redirect to stylist page to add or clear stylists. |
+| User can then also access and edit stylist info, create clients, or add specialties. | Click/type | stylist info and/or clients, and/or specialties were accessed, created, or edited. |
+| User clicks "View clients" link. | Click | Page redirect to client page to show or clear clients. |
+| User clicks client name if present. | Click | Page redirect to client info page to show info, add stylist, edit client info, or delete client. |
+| User clicks "View specialties" link. | Click | Page redirect to specialties page to show specialties, add specialties, or clear all specialties. |
+| User clicks specialty if present. | Click | Page redirects to page to show stylists that have this specialty, to add stylists to specialty, and to delete specialty. |
 
 ## Setup/Installation Requirements
-Download .NET Core 2.1.3 SDK and .NET Core Runtime 2.0.9 and install them.
-## Specs:
+Software Requirements:
+Download .NET Core 1.1.4 SDK and .NET Core Runtime 1.1.2 and install. Download Mono and MAMP and install those as well.
 
-1. The user is able to add a single stylist to the database at a time.
-2. The user can enter details about a stylist, particularly their specialities. There is no limit to the number of specialties that can be listed under a stylist.
-3. The user is then able to add one client at a time to that stylist. Each client only belongs to one stylist.
-4. If the user chooses to, they are able to delete a stylist, but once deleted, all of the listed information about the stylist (specialties and client list) are also deleted.
-## Setup/Installation Requirements
-Important Notes: Mono, .Net Core 1.1.4 SDK, and .NET Core Runtime 1.1.2 must be downloaded and installed.
-
-
-## Known Bugs
-A lot
+* Open GitHub and go to https://github.com/jasminealee/WordCounter.Solution and click "clone or download"; copy the url provided.
+* Go to Terminal and clone the folder by typing "git clone (repository url)" then enter.
+* To edit, open the folder in atom or your choice of text editor.
+* Open MAMP.
+* Go to "http://localhost:8888/phpMyAdmin/server_import.php".
+* Choose and import the files "jasmine_lee.sql" and "jasmine_lee_test.sql".
+* Navigate to the HairSalon main project folder (HairSalon).
+* In Terminal, type the commands commands: "$ dotnet build" and "$ dotnet run" respectively.
+* Open "http://localhost:5000" in a new browser to view the webpage.
 
 ## Support and contact details
-Contact: jasmine.al1722@gmail.com or search "jasminealee" on github
+
+Contact: jasmine.al1722@gmail.com_
 
 ## Technologies Used
+
 * Terminal
 * Atom
 * C#
-* HTML
-* CSS
-* .Net Core 2.0
+* .Net Core 1.1.4 SDK
+* .NET Core Runtime 1.1.2
 * GitBash
+* Mono
 * MAMP
-* phpMyAdmin
-
 
 ### License
-MIT
 
-Copyright (c) 2019 Jasmine Lee
+*MIT*
+
+*Copyright (c) 2019 Jasmine Lee*
