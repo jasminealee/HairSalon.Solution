@@ -7,7 +7,7 @@
   @if (Model["stylists"].Count == 0){
     <p>There are no stylists that have this specialty yet.</p>
   }
-  @if (Model["stylists"].Count != 0;
+  @if (Model["stylists"].Count != 0)
   {
     @foreach (StylistClass stylist in Model["stylists"])
     {
