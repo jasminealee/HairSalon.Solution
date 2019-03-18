@@ -14,7 +14,10 @@ namespace HairSalon.Controllers
     }
 
     [HttpGet("/specialties/new")]
-    public ActionResult New() { return View(); }
+    public ActionResult New()
+    {
+      return View();
+    }
 
     [HttpPost("/specialties")]
     public ActionResult Create(string feature){
