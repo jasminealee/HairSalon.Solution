@@ -7,42 +7,48 @@ using HairSalon.Models;
 namespace HairSalon.Tests
 {
   [TestClass]
-  public class ClientsControllerTest{
-    public ClientsControllerTest(){
+  public class ClientsControllerTests
+  {
+    [TestMethod]
+    public void ClientsControllerTest()
+    {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=jasmine_lee_test;";
     }
 
     [TestMethod]
-    public void Show_ReturnsCorrectView_True(){
+    public void Show_ReturnsCorrectView_True()
+    {
       ClientsController controller = new ClientsController();
-      StylistClass stylist = new StylistClass("Winston", "2536", 25);
-      ClientClass client = new ClientClass("sally", "5236", 1, 6);
+      StylistClass stylist = new StylistClass("Stylist1", "1", 1);
+      ClientClass client = new ClientClass("Client1", "111", 1, 1);
       ActionResult showView = controller.Show(1, 1);
       Assert.IsInstanceOfType(showView, typeof(ViewResult));
     }
 
     [TestMethod]
-    public void Show_HasCorrectModelType_Dictionary(){
+    public void Show_CorrectModelType_Dictionary()
+    {
       ClientsController controller = new ClientsController();
-      StylistClass stylist = new StylistClass("Winston", "2536", 25);
-      ClientClass client = new ClientClass("sally", "5236", 1, 6);
+      StylistClass stylist = new StylistClass("Stylist1", "1", 1);
+      ClientClass client = new ClientClass("Client1", "111", 1, 1);
       ViewResult showView = controller.Show(1,1) as ViewResult;
       var result = showView.ViewData.Model;
       Assert.IsInstanceOfType(result, typeof(Dictionary<string, object>));
     }
 
     [TestMethod]
-    public void New_ReturnsCorrectView_True(){
+    public void New_ReturnsCorrectView_True()
+    {
       ClientsController controller = new ClientsController();
-      StylistClass stylist = new StylistClass("Winston", "2536", 25);
+      StylistClass stylist = new StylistClass("Stylist1", "1", 1);
       ActionResult newView = controller.New(1);
       Assert.IsInstanceOfType(newView, typeof(ViewResult));
     }
 
     [TestMethod]
-    public void New_HasCorrectModelType_Stylist(){
+    public void New_CorrectModelType_Stylist(){
       ClientsController controller = new ClientsController();
-      StylistClass stylist = new StylistClass("Winston", "2536", 25);
+      StylistClass stylist = new StylistClass("Stylist", "1", 1);
       ViewResult newView = controller.New(1) as ViewResult;
       var result = newView.ViewData.Model;
       Assert.IsInstanceOfType(result, typeof(StylistClass));
@@ -51,8 +57,8 @@ namespace HairSalon.Tests
     [TestMethod]
     public void Edit_ReturnsCorrectView_True(){
       ClientsController controller = new ClientsController();
-      StylistClass stylist = new StylistClass("Winston", "2536", 25);
-      ClientClass client = new ClientClass("Sally", "5236", 1, 6);
+      StylistClass stylist = new StylistClass("Stylist1", "1", 1);
+      ClientClass client = new ClientClass("Client1", "1", 1, 1);
       ActionResult showView = controller.Edit(1, 1);
       Assert.IsInstanceOfType(showView, typeof(ViewResult));
     }
@@ -60,8 +66,8 @@ namespace HairSalon.Tests
     [TestMethod]
     public void Edit_HasCorrectModelType_Dictionary(){
       ClientsController controller = new ClientsController();
-      StylistClass stylist = new StylistClass("Winston", "2536", 25);
-      ClientClass client = new ClientClass("Sally", "5236", 1, 6);
+      StylistClass stylist = new StylistClass("Stylist", "1", 1);
+      ClientClass client = new ClientClass("Client1", "1", 1, 1);
       ViewResult newView = controller.Edit(1, 1) as ViewResult;
       var result = newView.ViewData.Model;
       Assert.IsInstanceOfType(result, typeof(Dictionary<string, object>));
@@ -89,11 +95,13 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
-    public void DeleteAll_RedirectsToCorrectAction_Index(){
+    public void DeleteAll_RedirectsToCorrectAction_Index()
+    {
       ClientsController controller = new ClientsController();
       RedirectToActionResult actionResult = controller.DeleteAll() as RedirectToActionResult;
       string result = actionResult.ActionName;
       Assert.AreEqual(result, "Index");
     }
+
   }
 }

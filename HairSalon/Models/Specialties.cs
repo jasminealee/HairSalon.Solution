@@ -93,7 +93,7 @@ namespace HairSalon.Models
 
     public static List<SpecialtyClass> GetAll()
     {
-      List<SpecialtyClass> allSpecialties = new List<SpecialtyClass>();
+      List<SpecialtyClass> allSpecialties = new List<SpecialtyClass> {};
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
@@ -101,8 +101,8 @@ namespace HairSalon.Models
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
 
       while(rdr.Read()){
-        int id = rdr.GetInt32(1);
-        string feature = rdr.GetString(0);
+        int id = rdr.GetInt32(0);
+        string feature = rdr.GetString(1);
         SpecialtyClass newSpecialty = new SpecialtyClass(feature, id);
         allSpecialties.Add(newSpecialty);
       }
@@ -122,7 +122,7 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT stylists.* FROM stylists JOIN stylists_specialties ON (stylists.Id = stylists_specialties.stylist_Id) JOIN specialties ON (stylists_specialties.specialty_Id = specialties.ID) WHERE specialties.ID = (@specialtyID);";
+      cmd.CommandText = @"SELECT stylists.* FROM stylists JOIN stylists_specialties ON (stylists.Id = stylists_specialties.stylist_Id) JOIN specialties ON (stylists_specialties.specialty_Id = specialties.Id) WHERE specialties.Id = (@specialtyId);";
       MySqlParameter specialtyId = new MySqlParameter();
       specialtyId.ParameterName = "@specialtyId";
       specialtyId.Value = this._id;
@@ -130,9 +130,9 @@ namespace HairSalon.Models
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       while(rdr.Read())
       {
-        int stylistId = rdr.GetInt32(2);
-        string name = rdr.GetString(0);
-        string phoneNumber = rdr.GetString(1);
+        int stylistId = rdr.GetInt32(0);
+        string name = rdr.GetString(1);
+        string phoneNumber = rdr.GetString(2);
         StylistClass newStylist = new StylistClass(name, phoneNumber, stylistId);
         allStylists.Add(newStylist);
       }
@@ -159,8 +159,8 @@ namespace HairSalon.Models
       string feature = "";
       while (rdr.Read())
       {
-        specialtyId = rdr.GetInt32(1);
-        feature = rdr.GetString(0);
+        specialtyId = rdr.GetInt32(0);
+        feature = rdr.GetString(1);
       }
       SpecialtyClass foundSpecialty = new SpecialtyClass(feature, specialtyId);
 

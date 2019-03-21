@@ -11,7 +11,8 @@
   {
     @foreach (StylistClass stylist in Model["stylists"])
     {
-     <strong><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a></strong><
+     <strong><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a></strong>
+     <br>
     }
   }
 </ul>
@@ -21,8 +22,10 @@
   <label for="stylistId">Select a stylist:</label>
   <select id="stylistId" name="stylistId" type="text">
     @foreach (var stylist in @Model["allStylists"]){
-      <option value="@stylist.GetId()">@stylist.GetFirstName()</option>
+      <option value="@stylist.GetId()">@stylist.GetName()</option>
     }
   </select>
-  <button type="submit" name="button" class="btn btn-success">Add</button>
+  <button type="submit" name="button">Add</button>
 </form>
+<br>
+<a href='/stylists'>Home</a>

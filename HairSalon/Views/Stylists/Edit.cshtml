@@ -2,18 +2,18 @@
   Layout = "_Layout";
 }
 
-<h1>Hair Salon Management Portal</h1>
-<hr>
-
-<h2>Edit stylist: @Model.GetName()</h2>
-<form action="/stylists/@Model.GetId()" method="post">
-  <div class="form-group">
-    <label for="name">First Name:</label>
-    <input id="name" name="name" type="text" class="form-control" value="@Model.GetName()" required>
+<h1>Edit Stylist</h1>
+<h2>Edit stylist: @Model["stylist"].GetName()</h2>
+<form action="/stylists/@Model["stylist"].GetId()" method="post">
+  <div>
+    <label for="newName">First Name:</label>
+    <input id="newName" name="newName" type="text" required>
   </div>
-  <div class="form-group">
-    <label for="phoneNumber">Phone Number:</label>
-    <input id="phoneNumber" name="phoneNumber" type="text" class="form-control"  value ="@Model.GetPhoneNumber()" required>
+  <div>
+    <label for="newPhoneNumber">Phone Number:</label>
+    <input id="newPhoneNumber" name="newPhoneNumber" type="text" required>
   </div>
-  <button type="submit">Edit:</button>
+  <button type="submit">Submit:</button>
 </form>
+<br>
+<a href='/stylists'>Home</a>

@@ -96,10 +96,10 @@ namespace HairSalon.Models
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
 
       while(rdr.Read()){
-        int clientId = rdr.GetInt32(3);
-        string name = rdr.GetString(0);
-        string phoneNumber = rdr.GetString(1);
-        int stylistId = rdr.GetInt32(2);
+        int clientId = rdr.GetInt32(0);
+        string name = rdr.GetString(1);
+        string phoneNumber = rdr.GetString(2);
+        int stylistId = rdr.GetInt32(3);
         ClientClass newClient = new ClientClass(name, phoneNumber, stylistId, clientId);
         allClients.Add(newClient);
       }
@@ -170,10 +170,10 @@ namespace HairSalon.Models
       int stylistId = 0;
       while (rdr.Read())
       {
-        clientId = rdr.GetInt32(3);
-        name = rdr.GetString(0);
-        phoneNumber = rdr.GetString(1);
-        stylistId = rdr.GetInt32(2);
+        clientId = rdr.GetInt32(0);
+        name = rdr.GetString(1);
+        phoneNumber = rdr.GetString(2);
+        stylistId = rdr.GetInt32(3);
       }
       ClientClass foundClient = new ClientClass(name, phoneNumber, stylistId, clientId);
 

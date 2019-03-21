@@ -38,7 +38,7 @@ namespace HairSalon.Controllers
     [HttpGet("/specialties/{Id}")]
     public ActionResult Show(int id){
       SpecialtyClass specialty = SpecialtyClass.Find(id);
-      List<StylistClass> stylists = SpecialtyClass.GetStylists();
+      List<StylistClass> stylists = specialty.GetStylists();
       List<StylistClass> allStylists = StylistClass.GetAll();
       Dictionary<string, object> model = new Dictionary<string, object>();
       model.Add("specialty", specialty);

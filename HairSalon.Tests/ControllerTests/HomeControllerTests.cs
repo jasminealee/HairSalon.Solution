@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using HairSalon.Controllers;
 using HairSalon.Models;
 
+
 namespace HairSalon.Tests
 {
     [TestClass]
@@ -15,6 +16,6 @@ namespace HairSalon.Tests
         ActionResult indexView = controller.Index();
         Assert.IsInstanceOfType(indexView, typeof(ViewResult));
       }
-      
+
     }
 }
