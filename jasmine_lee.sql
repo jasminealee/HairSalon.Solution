@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 21, 2019 at 03:16 AM
+-- Generation Time: Mar 27, 2019 at 05:32 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -13,6 +13,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `jasmine_lee`
 --
+CREATE DATABASE IF NOT EXISTS `jasmine_lee` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `jasmine_lee`;
 
 -- --------------------------------------------------------
 
@@ -45,7 +47,8 @@ CREATE TABLE `specialties` (
 INSERT INTO `specialties` (`id`, `feature`) VALUES
 (59, 'specialty1'),
 (61, 'specialty3'),
-(62, 'specialty4');
+(62, 'specialty4'),
+(63, 'specialty5');
 
 -- --------------------------------------------------------
 
@@ -105,7 +108,8 @@ INSERT INTO `stylists_specialties` (`id`, `stylist_Id`, `specialty_Id`) VALUES
 (355, 79, 59),
 (356, 79, 61),
 (357, 80, 59),
-(358, 81, 59);
+(358, 81, 59),
+(359, 81, 63);
 
 --
 -- Indexes for dumped tables
@@ -149,13 +153,13 @@ ALTER TABLE `stylists_specialties`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `specialties`
 --
 ALTER TABLE `specialties`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `stylists`
@@ -167,10 +171,10 @@ ALTER TABLE `stylists`
 -- AUTO_INCREMENT for table `stylists_clients`
 --
 ALTER TABLE `stylists_clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `stylists_specialties`
 --
 ALTER TABLE `stylists_specialties`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=359;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=360;
